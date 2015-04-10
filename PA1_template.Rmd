@@ -15,13 +15,18 @@ Installation of packages commented out since only needed to execute once.
 library(dplyr)
 library(reshape)
 library(ggplot2)
+library(downloader)
 ```
 
 ## Loading and preprocessing the data  
 Code below could be upgraded to download zip file and read contents.  
 ```{r}
-setwd("H:/2015/coursera/data_science/reproducible_research/peer_assignment_1")
+setwd("G:/2015/coursera/data_science/reproducible_research/peer_assignment_1")
+## download zip file & unzip
+download("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", dest="repdata data activity.zip", mode="wb") 
+unzip ("repdata data activity.zip")
 activitydf <- read.csv("activity.csv", header = TRUE, stringsAsFactors=FALSE)
+if(nrow(activitydf)!=17568) stop ("Error downloading/unzipping/reading data, 17568 rows not detected.")
 ```
 
 
